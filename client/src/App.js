@@ -26,16 +26,16 @@ class App extends Component {
     };
   }
   componentDidMount() {
-    fetch('/users')
+    fetch('/data')
       .then(res => res.json())
       .then(members => this.setState({ members: members }));
   }
   render() {
     return (
-      <div className="Users">
-        <h1>Users</h1>
+      <div className="Data">
+        <h1>Data</h1>
         {this.state.members.map(member =>
-          <div key={member.id}>{member.name} {member.surname} - {member.email}</div>
+          <div key={member.customerNumber}>{member.customerName}</div>
         )}
       </div>
     );

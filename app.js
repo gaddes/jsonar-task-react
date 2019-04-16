@@ -45,24 +45,28 @@ app.use(cookieParser());
 app.use('/', index);
 app.use('/data', data);
 
+// FIXME: I commented this out to get around this error in node app
+// Error: Failed to lookup view "error" in views directory "/Users/matthewgaddes/projects_local/jsonar-task-react/views"
+
 // Catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
+// app.use(function(req, res, next) {
+//   var err = new Error('Not Found');
+//   err.status = 404;
+//   next(err);
+// });
 
 // Error handler
-app.use(function(err, req, res, next) {
-  // Set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-  // Render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
+// app.use(function(err, req, res, next) {
+//   // Set locals, only providing error in development
+//   res.locals.message = err.message;
+//   res.locals.error = req.app.get('env') === 'development' ? err : {};
+//   // Render the error page
+//   res.status(err.status || 500);
+//   res.render('error');
+// });
 
 var http = require('http');
 module.exports = app;
 var server = http.createServer(app);
 server.listen(4007);
+console.log('success!')
